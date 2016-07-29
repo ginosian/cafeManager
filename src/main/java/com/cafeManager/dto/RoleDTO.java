@@ -1,9 +1,6 @@
 package com.cafeManager.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Martha on 7/29/2016.
@@ -16,6 +13,7 @@ public class RoleDTO {
     @GeneratedValue
     private Long id;
 
+    @Column(unique = true)
     private String role;
 
     public RoleDTO() {

@@ -1,0 +1,87 @@
+﻿Adds Services of user, table.
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Fri Jul 29 19:17:46 2016 +0400
+#
+# On branch master
+# Changes to be committed:
+#	modified:   .idea/workspace.xml
+#	modified:   src/main/java/com/cafeManager/configuration/Configurations.java
+#	new file:   src/main/java/com/cafeManager/configuration/CustomUserDetailService.java
+#	new file:   src/main/java/com/cafeManager/configuration/SecurityConfigrations.java
+#	new file:   src/main/java/com/cafeManager/configuration/SecuritySuccessHandler.java
+#	new file:   src/main/java/com/cafeManager/controller/AuthController.java
+#	new file:   src/main/java/com/cafeManager/controller/ManagerController.java
+#	modified:   src/main/java/com/cafeManager/controller/TemporaryResources.java
+#	new file:   src/main/java/com/cafeManager/controller/WaiterController.java
+#	modified:   src/main/java/com/cafeManager/dao/OrderDAOImpl.java
+#	modified:   src/main/java/com/cafeManager/dao/ProductDAOImpl.java
+#	modified:   src/main/java/com/cafeManager/dao/TableDAOImpl.java
+#	modified:   src/main/java/com/cafeManager/dao/UserDAO.java
+#	modified:   src/main/java/com/cafeManager/dao/UserDAOImpl.java
+#	modified:   src/main/java/com/cafeManager/dto/RoleDTO.java
+#	modified:   src/main/java/com/cafeManager/dto/UserDTO.java
+#	new file:   src/main/java/com/cafeManager/exception/EmptyArgumentsException.java
+#	new file:   src/main/java/com/cafeManager/exception/NoSuchUserException.java
+#	new file:   src/main/java/com/cafeManager/service/TableService.java
+#	new file:   src/main/java/com/cafeManager/service/TableServiceImpl.java
+#	new file:   src/main/java/com/cafeManager/service/UserService.java
+#	new file:   src/main/java/com/cafeManager/service/UserServiceImpl.java
+#	modified:   src/main/resources/config.properties
+#	new file:   src/main/webapp/WEB-INF/index.jsp
+#	new file:   src/main/webapp/index.jsp
+#	modified:   target/cafeManager-1.0-SNAPSHOT.war
+#	deleted:    target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/Initializer.class
+#	renamed:    target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/Configurations.class -> target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/configuration/Configurations.class
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/configuration/CustomUserDetailService.class
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/configuration/Initializer.class
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/configuration/SecurityConfigrations.class
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/configuration/SecuritySuccessHandler.class
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/controller/TemporaryResources.class
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/dao/OrderDAO.class
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/dao/OrderDAOImpl.class
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/dao/ProductDAO.class
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/dao/ProductDAOImpl.class
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/dao/TableDAO.class
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/dao/TableDAOImpl.class
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/dao/UserDAO.class
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/dao/UserDAOImpl.class
+#	modified:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/dto/RoleDTO.class
+#	modified:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/dto/UserDTO.class
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/exception/EmptyArgumentsException.class
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/exception/NoSuchUserException.class
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/service/TableService.class
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/service/TableServiceImpl.class
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/service/UserService.class
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/com/cafeManager/service/UserServiceImpl.class
+#	modified:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/classes/config.properties
+#	new file:   target/cafeManager-1.0-SNAPSHOT/WEB-INF/index.jsp
+#	new file:   target/cafeManager-1.0-SNAPSHOT/index.jsp
+#	deleted:    target/classes/com/cafeManager/Initializer.class
+#	renamed:    target/classes/com/cafeManager/Configurations.class -> target/classes/com/cafeManager/configuration/Configurations.class
+#	new file:   target/classes/com/cafeManager/configuration/CustomUserDetailService.class
+#	new file:   target/classes/com/cafeManager/configuration/Initializer.class
+#	new file:   target/classes/com/cafeManager/configuration/SecurityConfigrations.class
+#	new file:   target/classes/com/cafeManager/configuration/SecuritySuccessHandler.class
+#	new file:   target/classes/com/cafeManager/controller/TemporaryResources.class
+#	new file:   target/classes/com/cafeManager/dao/OrderDAO.class
+#	new file:   target/classes/com/cafeManager/dao/OrderDAOImpl.class
+#	new file:   target/classes/com/cafeManager/dao/ProductDAO.class
+#	new file:   target/classes/com/cafeManager/dao/ProductDAOImpl.class
+#	new file:   target/classes/com/cafeManager/dao/TableDAO.class
+#	new file:   target/classes/com/cafeManager/dao/TableDAOImpl.class
+#	new file:   target/classes/com/cafeManager/dao/UserDAO.class
+#	new file:   target/classes/com/cafeManager/dao/UserDAOImpl.class
+#	modified:   target/classes/com/cafeManager/dto/RoleDTO.class
+#	modified:   target/classes/com/cafeManager/dto/UserDTO.class
+#	new file:   target/classes/com/cafeManager/exception/EmptyArgumentsException.class
+#	new file:   target/classes/com/cafeManager/exception/NoSuchUserException.class
+#	new file:   target/classes/com/cafeManager/service/TableService.class
+#	new file:   target/classes/com/cafeManager/service/TableServiceImpl.class
+#	new file:   target/classes/com/cafeManager/service/UserService.class
+#	new file:   target/classes/com/cafeManager/service/UserServiceImpl.class
+#	modified:   target/classes/config.properties
+#
+

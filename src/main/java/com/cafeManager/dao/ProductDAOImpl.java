@@ -4,14 +4,13 @@ import com.cafeManager.dto.ProductDTO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.Resource;
 
 /**
  * Created by Martha on 7/29/2016.
  */
-@Resource
+@Repository
 @Transactional
 public class ProductDAOImpl implements ProductDAO{
 
