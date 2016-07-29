@@ -232,7 +232,7 @@
       <created>1469773492291</created>
       <option name="number" value="Default" />
       <updated>1469773492291</updated>
-      <workItem from="1469773495886" duration="3155000" />
+      <workItem from="1469773495886" duration="3194000" />
     </task>
     <task id="LOCAL-00001" summary="Sets maven dependencies.">
       <created>1469779023971</created>
@@ -246,11 +246,17 @@
       <option name="project" value="LOCAL" />
       <updated>1469779100781</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Sets maven dependencies.">
+      <created>1469779138884</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1469779138884</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3155000" />
+    <option name="totallyTimeSpent" value="3194000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
