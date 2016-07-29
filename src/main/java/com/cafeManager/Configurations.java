@@ -80,9 +80,4 @@ public class Configurations extends WebMvcConfigurerAdapter {
         viewResolver.setViewClass(JstlView.class);
         return viewResolver;
     }
-
-
-
-
-
 }
