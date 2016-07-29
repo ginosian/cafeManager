@@ -1,5 +1,6 @@
-package com.cafeManager;
+package com.cafeManager.configuration;
 
+import com.cafeManager.configuration.Configurations;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
