@@ -21,4 +21,7 @@ public interface TableDAO {
     /** Gets those Tables which are assigned to specified waiter*/
     List<TableDTO> getTablesByWaiter(Long userId);
 
+    /** Gets all Tables list*/
+    List<TableDTO> getAllTables();
+
 }

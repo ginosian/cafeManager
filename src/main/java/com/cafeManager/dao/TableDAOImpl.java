@@ -68,6 +68,31 @@ public class TableDAOImpl implements TableDAO {
 
     @Override
     public List<TableDTO> getTablesByWaiter(Long userId) {
+        Session session = getSession();
+        try{
+            Query query = session.createQuery("from TableDTO t where t.user.id = :id");
+            query.setParameter("id", userId);
+            List<TableDTO> tables = query.list();
+            if (tables.size() < 1) return null;
+            return tables;
+        }
+        catch (HibernateException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<TableDTO> getAllTables() {
+        Session session = getSession();
+        try{
+            List<TableDTO> tables = session.createQuery("from TableDTO").list();
+            if (tables.size() < 1) return null;
+            return tables;
+        }
+        catch (HibernateException e){
+            e.printStackTrace();
+        }
         return null;
     }
 }

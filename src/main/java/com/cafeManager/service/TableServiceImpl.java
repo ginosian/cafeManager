@@ -1,8 +1,10 @@
 package com.cafeManager.service;
 
 import com.cafeManager.dao.TableDAO;
+import com.cafeManager.dto.OrderDTO;
 import com.cafeManager.dto.TableDTO;
-import com.cafeManager.exception.NullOrEmptyArgumentsException;
+import com.cafeManager.dto.UserDTO;
+import com.cafeManager.exception.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,27 +19,39 @@ public class TableServiceImpl implements TableService{
     @Autowired
     TableDAO tableDAO;
 
+    @Autowired
+    UserDTO userDTO;
+
+    @Autowired
+    OrderDTO orderDTO;
+
     @Override
-    public TableDTO createTable(TableDTO table) throws NullOrEmptyArgumentsException{
-        if(table == null) throw new NullOrEmptyArgumentsException();
-        return tableDAO.addTable(table);
+    public TableDTO createTable() {
+        return null;
     }
 
     @Override
-    public TableDTO getTable(Long tableId) throws NullOrEmptyArgumentsException{
-        if(tableId == null || tableId == 0) throw new NullOrEmptyArgumentsException();
-        return tableDAO.getTable(tableId);
+    public TableDTO getTable(String tableId) throws NoSuchTableException, NullOrEmptyArgumentsException {
+        return null;
     }
 
     @Override
-    public TableDTO updateTable(TableDTO tableDTO) throws NullOrEmptyArgumentsException{
-        if(tableDTO == null) throw new NullOrEmptyArgumentsException();
-        if(getTable(tableDTO.getId()) != null) return null;
-        return tableDAO.updateTable(tableDTO);
+    public TableDTO updateTableWIthWaiter(String userId, String tableId) throws NoSuchUserException, TableAlreadyHasWaiter, NullOrEmptyArgumentsException {
+        return null;
     }
 
     @Override
-    public List<TableDTO> getTablesByWaiter(Long userId) throws NullOrEmptyArgumentsException{
+    public TableDTO updateTableWIthOrder(String orderId) throws NoSuchOrderException, TableHasActiveOrderException, NullOrEmptyArgumentsException {
+        return null;
+    }
+
+    @Override
+    public TableDTO deactivateTableOrder() throws TableHasNoActiveOrderException {
+        return null;
+    }
+
+    @Override
+    public List<TableDTO> getTablesByWaiter(String userId) throws NoSuchTableException, NoSuchUserException, NullOrEmptyArgumentsException {
         return null;
     }
 }
