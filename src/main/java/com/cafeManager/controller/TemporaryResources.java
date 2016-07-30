@@ -26,7 +26,7 @@ public class TemporaryResources {
     Environment environment;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public ModelAndView addRole(){
+    public ModelAndView addRole() {
         userService.createRole(environment.getProperty("role_waiter"));
         userService.createRole(environment.getProperty("role_manager"));
         userService.createUser("Karen", "aa", environment.getProperty("role_waiter"));
