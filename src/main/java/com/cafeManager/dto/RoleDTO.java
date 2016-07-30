@@ -13,7 +13,7 @@ public class RoleDTO {
     @GeneratedValue
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String role;
 
     public RoleDTO() {

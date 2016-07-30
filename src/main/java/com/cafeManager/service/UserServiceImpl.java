@@ -4,6 +4,9 @@ import com.cafeManager.dao.UserDAO;
 import com.cafeManager.dto.RoleDTO;
 import com.cafeManager.dto.UserDTO;
 import com.cafeManager.exception.EmptyArgumentsException;
+import com.cafeManager.exception.NoSuchRoleException;
+import com.cafeManager.exception.RoleExistException;
+import com.cafeManager.exception.UserExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,10 +22,11 @@ public class UserServiceImpl implements UserService{
     UserDAO userDAO;
 
     @Override
-    public UserDTO createUser(String username, String password, String role) {
+    public UserDTO createUser(String username, String password, String role) throws UserExistException {
         if(username.isEmpty() || password.isEmpty() || role.isEmpty())throw new EmptyArgumentsException();
         RoleDTO roleDTO = userDAO.getRole(role);
-        if(userDAO.getUser(username) != null || roleDTO == null) return null;
+        if(roleDTO == null)throw new NoSuchRoleException();
+        if(userDAO.getUser(username) != null) throw new UserExistException();
         UserDTO userDTO = new UserDTO(username, password, roleDTO);
         return userDAO.addUser(userDTO);
     }
@@ -35,9 +39,9 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public RoleDTO createRole(String role) {
+    public RoleDTO createRole(String role) throws RoleExistException{
         if(role.isEmpty()) throw new EmptyArgumentsException();
-        if(userDAO.getRole(role) != null) return null;
+        if(userDAO.getRole(role) != null) throw new RoleExistException();
         RoleDTO roleDTO = new RoleDTO(role);
         return userDAO.addRole(roleDTO);
     }

@@ -2,6 +2,7 @@ package com.cafeManager.configuration;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +24,7 @@ import java.util.Properties;
  * Created by Martha on 7/29/2016.
  */
 @Configuration
+@EnableAutoConfiguration
 @EnableWebMvc
 @EnableTransactionManagement
 @ComponentScan("com.cafeManager")
@@ -49,7 +51,7 @@ public class Configurations extends WebMvcConfigurerAdapter {
     public Properties hibernateProperties(){
         Properties hibernateProperties = new Properties();
         hibernateProperties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        hibernateProperties.put("hibernate.hbm2ddl.auto", "update");
+        hibernateProperties.put("hibernate.hbm2ddl.auto", "create-drop");
         hibernateProperties.put("hibernate.c3p0.max_size", 5);
         hibernateProperties.put("hibernate.c3p0.min_size", 1);
         hibernateProperties.put("hibernate.show_sql", "true");
