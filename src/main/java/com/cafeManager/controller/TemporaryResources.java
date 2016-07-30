@@ -33,6 +33,7 @@ public class TemporaryResources {
         userService.createUser("Karine", "aa", environment.getProperty("role_waiter"));
         userService.createUser("John", "aa", environment.getProperty("role_waiter"));
 
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
         return modelAndView;
