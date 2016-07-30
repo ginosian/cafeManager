@@ -18,7 +18,7 @@ public class UserDTO {
 
     private String password;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private RoleDTO role;
 
     public UserDTO() {

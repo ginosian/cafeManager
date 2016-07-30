@@ -55,7 +55,7 @@ public class UserDAOImpl implements UserDAO{
     public List<UserDTO> getAllUsersByRole(String role) {
         Session session = getSession();
         try{
-            Query query = session.createQuery("select UserDTO from UserDTO userDTO where userDTO.role = :role");
+            Query query = session.createQuery("from UserDTO u where u.role.role = :role");
             query.setParameter("role", role);
             List<UserDTO> users = query.list();
             if (users.size() < 1) return null;
