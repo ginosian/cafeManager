@@ -32,7 +32,7 @@ public class TableDAOImpl implements TableDAO {
         try{
             session.save(table);
             return table;
-        } catch (HibernateException e){
+        } catch (HibernateException e) {
             e.printStackTrace();
         }
         return null;
