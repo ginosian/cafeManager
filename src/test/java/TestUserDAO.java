@@ -2,9 +2,11 @@ import com.cafeManager.configuration.Configurations;
 import com.cafeManager.configuration.Initializer;
 import com.cafeManager.dao.UserDAO;
 import com.cafeManager.exception.NoSuchRoleException;
+import com.cafeManager.exception.NullOrEmptyArgumentsException;
 import com.cafeManager.exception.RoleExistException;
 import com.cafeManager.service.UserService;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -37,14 +39,29 @@ public class TestUserDAO extends AbstractTransactionalJUnit4SpringContextTests {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void testAddRole() throws RoleExistException{
-        userService.createRole("role_waiter");
-        Assert.assertNotNull(userService.getRole("role_waiter"));
+    public void testRole() throws RoleExistException{
+        userService.createRole(environment.getProperty("role_waiter"));
+        Assert.assertNotNull(userService.getRole(environment.getProperty("role_waiter")));
         Assert.assertNull(userService.getRole("invalid_role"));
         thrown.expect(RoleExistException.class);
-        userService.createRole("role_waiter");
+        userService.createRole(environment.getProperty("role_waiter"));
         thrown.expect(NoSuchRoleException.class);
         userService.getRole("invalid_role");
+        thrown.expect(NullOrEmptyArgumentsException.class);
+        userService.createRole(null);
+        thrown.expect(NullOrEmptyArgumentsException.class);
+        userService.getRole(null);
     }
+
+    @Before
+    public void createRole(){
+        try {
+            userService.createRole(environment.getProperty("role_waiter"));
+        } catch (RoleExistException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 }

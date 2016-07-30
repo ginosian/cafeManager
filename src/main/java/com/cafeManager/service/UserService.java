@@ -21,7 +21,10 @@ public interface UserService {
     List<UserDTO> getAllUsersByRole(String role);
 
     /** Creates new role. Checks if role is empty throws EmptyArgumentException, if role does exist
-     * returns null.*/
+     * returns null.
+     * @param role String representation of role, it is recommended to take values from
+     *             classpath:config.properties file
+     * @throws RoleExistException*/
     RoleDTO createRole(String role) throws RoleExistException;
 
     /** Finds specified role. Checks if role is empty throws EmptyArgumentException, if role doesn't exist
