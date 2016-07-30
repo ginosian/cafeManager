@@ -18,26 +18,26 @@ public class TableServiceImpl implements TableService{
     TableDAO tableDAO;
 
     @Override
-    public TableDTO createTable(TableDTO table) {
+    public TableDTO createTable(TableDTO table) throws NullOrEmptyArgumentsException{
         if(table == null) throw new NullOrEmptyArgumentsException();
         return tableDAO.addTable(table);
     }
 
     @Override
-    public TableDTO getTable(Long tableId) {
+    public TableDTO getTable(Long tableId) throws NullOrEmptyArgumentsException{
         if(tableId == null || tableId == 0) throw new NullOrEmptyArgumentsException();
         return tableDAO.getTable(tableId);
     }
 
     @Override
-    public TableDTO updateTable(TableDTO tableDTO) {
+    public TableDTO updateTable(TableDTO tableDTO) throws NullOrEmptyArgumentsException{
         if(tableDTO == null) throw new NullOrEmptyArgumentsException();
         if(getTable(tableDTO.getId()) != null) return null;
         return tableDAO.updateTable(tableDTO);
     }
 
     @Override
-    public List<TableDTO> getTablesByWaiter(Long userId) {
+    public List<TableDTO> getTablesByWaiter(Long userId) throws NullOrEmptyArgumentsException{
         return null;
     }
 }

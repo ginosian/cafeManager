@@ -36,11 +36,27 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
-    public UserDTO getUser(String username) {
+    public UserDTO getUserById(Long userId) {
+        Session session = getSession();
+        try{
+            Query query = session.createQuery("from UserDTO userDTO where userDTO.id = :id");
+            query.setParameter("id", userId);
+            if (query.list().size() < 1) return null;
+            UserDTO userDTO = (UserDTO)query.list().get(0);
+            return userDTO;
+        }
+        catch (HibernateException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public UserDTO getUserByUsername(String userName) {
         Session session = getSession();
         try{
             Query query = session.createQuery("from UserDTO userDTO where userDTO.username = :username");
-            query.setParameter("username", username);
+            query.setParameter("username", userName);
             if (query.list().size() < 1) return null;
             UserDTO userDTO = (UserDTO)query.list().get(0);
             return userDTO;

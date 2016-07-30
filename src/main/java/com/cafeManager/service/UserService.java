@@ -2,8 +2,7 @@ package com.cafeManager.service;
 
 import com.cafeManager.dto.RoleDTO;
 import com.cafeManager.dto.UserDTO;
-import com.cafeManager.exception.RoleExistException;
-import com.cafeManager.exception.UserExistException;
+import com.cafeManager.exception.*;
 
 import java.util.List;
 
@@ -12,23 +11,60 @@ import java.util.List;
  */
 public interface UserService {
 
-    /** Creates new user. Checks if user exist returns null, else returns created user. Checks if all arguments
-     * exist. If any argument is missing throws EmptyArgumentException.*/
-    UserDTO createUser(String username, String password, String role) throws UserExistException;
+    /** Creates new user.
+     * @param username username and also a logging credential.
+     * @param password Password
+     * @param role String representation of role, it is recommended to take values from
+     *             classpath:config.properties file.
+     * @return {@link UserDTO}
+     * @throws UserExistException if user exist.
+     * @throws NoSuchRoleException if role doesn't exist.
+     * @throws NullOrEmptyArgumentsException if any argument is missing or is a null.
+     * */
+    UserDTO createUser(String username, String password, String role) throws UserExistException, NoSuchRoleException, NullOrEmptyArgumentsException;
 
-    /** Get users list with specified role. Checks if role is empty throws EmptyArgumentException, if role doesn't exist
-     * returns null.*/
-    List<UserDTO> getAllUsersByRole(String role);
+    /** Finds user by Id.
+     * @param id id of searching user.
+     * @return {@link UserDTO}
+     * @throws NoSuchUserException if user doesn't exist.
+     * @throws NullOrEmptyArgumentsException if any argument is missing or is a null.
+     * */
+    UserDTO getUserById(String id) throws NoSuchUserException, NullOrEmptyArgumentsException;
 
-    /** Creates new role. Checks if role is empty throws EmptyArgumentException, if role does exist
-     * returns null.
+    /** Finds user by username.
+     * @param username username and also a logging credential.
+     * @return {@link UserDTO}
+     * @throws NoSuchUserException if user doesn't exist.
+     * @throws NullOrEmptyArgumentsException if any argument is missing or is a null.
+     * */
+    UserDTO getUserByUsername(String username) throws NoSuchUserException, NullOrEmptyArgumentsException;
+
+
+    /** Get users list with specified role. @param username username and also a logging credential.
+     * @param role String representation of role, it is recommended to take values from
+     *             classpath:config.properties file.
+     * @return {@link List<UserDTO>}
+     * @throws NoSuchRoleException if role doesn't exist.
+     * @throws NullOrEmptyArgumentsException if any argument is missing or is a null.
+     * */
+    List<UserDTO> getAllUsersByRole(String role) throws NoSuchRoleException, NoSuchUserException, NullOrEmptyArgumentsException;
+
+    /** Creates new role.
      * @param role String representation of role, it is recommended to take values from
      *             classpath:config.properties file
-     * @throws RoleExistException*/
-    RoleDTO createRole(String role) throws RoleExistException;
+     * @return {@link RoleDTO}
+     * @throws RoleExistException if role does exist.
+     * @throws NullOrEmptyArgumentsException if any argument is missing or is a null.
+     * */
+    RoleDTO createRole(String role) throws RoleExistException, NullOrEmptyArgumentsException;
 
-    /** Finds specified role. Checks if role is empty throws EmptyArgumentException, if role doesn't exist
-     * returns null.*/
-    RoleDTO getRole(String role);
+    /** Finds specified role.
+     * @param role String representation of role, it is recommended to take values from
+     *             classpath:config.properties file
+     * @return {@link RoleDTO}
+     * @throws NoSuchRoleException if role doesn't exist.
+     * @throws NullOrEmptyArgumentsException if any argument is missing or is a null.
+     * */
+    RoleDTO getRole(String role) throws NoSuchRoleException, NullOrEmptyArgumentsException;
 
 }

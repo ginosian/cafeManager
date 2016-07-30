@@ -13,8 +13,11 @@ public interface UserDAO {
     /** Creates new user.*/
     UserDTO addUser(UserDTO user);
 
+    /** Finds specified user by Id*/
+    UserDTO getUserById(Long userId);
+
     /** Finds specified user by username*/
-    UserDTO getUser(String username);
+    UserDTO getUserByUsername(String userName);
 
     /** Get users list with specified role.*/
     List<UserDTO> getAllUsersByRole(String role);
