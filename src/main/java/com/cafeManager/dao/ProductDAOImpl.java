@@ -37,11 +37,27 @@ public class ProductDAOImpl implements ProductDAO{
     }
 
     @Override
-    public ProductDTO getProduct(Long productId) {
+    public ProductDTO getProductById(Long productId) {
         Session session = getSession();
         try{
             Query query = session.createQuery("from ProductDTO productDTO where productDTO.id = :id");
             query.setParameter("id", productId);
+            ProductDTO productDTO = (ProductDTO)query.list().get(0);
+            if (query.list().size() < 1) return null;
+            return productDTO;
+        }
+        catch (HibernateException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public ProductDTO getProductByName(String productName) {
+        Session session = getSession();
+        try{
+            Query query = session.createQuery("from ProductDTO productDTO where productDTO.name = :name");
+            query.setParameter("name", productName);
             ProductDTO productDTO = (ProductDTO)query.list().get(0);
             if (query.list().size() < 1) return null;
             return productDTO;

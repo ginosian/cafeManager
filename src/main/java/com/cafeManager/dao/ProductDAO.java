@@ -11,5 +11,8 @@ public interface ProductDAO {
     ProductDTO addProduct(ProductDTO productDTO);
 
     /** Finds product with specified Id */
-    ProductDTO getProduct(Long productId);
+    ProductDTO getProductById(Long productId);
+
+    /** Finds product with specified Name */
+    ProductDTO getProductByName(String productName);
 }
