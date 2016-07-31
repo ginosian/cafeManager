@@ -1,6 +1,9 @@
 package com.cafeManager.dao;
 
 import com.cafeManager.dto.ProductDTO;
+import com.cafeManager.dto.TableDTO;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +26,29 @@ public class ProductDAOImpl implements ProductDAO{
 
     @Override
     public ProductDTO addProduct(ProductDTO productDTO) {
+        Session session = getSession();
+        try{
+            session.save(productDTO);
+            return productDTO;
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public ProductDTO getProduct(Long productId) {
+        Session session = getSession();
+        try{
+            Query query = session.createQuery("from ProductDTO productDTO where productDTO.id = :id");
+            query.setParameter("id", productId);
+            ProductDTO productDTO = (ProductDTO)query.list().get(0);
+            if (query.list().size() < 1) return null;
+            return productDTO;
+        }
+        catch (HibernateException e){
+            e.printStackTrace();
+        }
         return null;
     }
 }
