@@ -1,11 +1,9 @@
 import com.cafeManager.configuration.Configurations;
 import com.cafeManager.configuration.Initializer;
-import com.cafeManager.dao.UserDAO;
 import com.cafeManager.dto.RoleDTO;
 import com.cafeManager.exception.*;
 import com.cafeManager.service.UserService;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -26,10 +24,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 })
 // TODO Extend Configurations class, override database URL from original to test one and pass as ContextConfiguration class for tests
 public class TestUserDAO extends AbstractTransactionalJUnit4SpringContextTests {
-    private RoleDTO roleDTO;
-
-    @Autowired
-    UserDAO userDAO;
 
     @Autowired
     UserService userService;
@@ -62,17 +56,10 @@ public class TestUserDAO extends AbstractTransactionalJUnit4SpringContextTests {
         userService.getRole(null);
     }
 
-    @Before
-    public void createRole() throws RoleExistException, NullOrEmptyArgumentsException{
-        try {
-            roleDTO = userService.createRole(environment.getProperty("role_waiter"));
-        } catch (RoleExistException e) {
-            e.printStackTrace();
-        }
-    }
-
     @Test
-    public void testUser()throws UserExistException, NoSuchUserException, NoSuchRoleException, NullOrEmptyArgumentsException{
+    public void testUser()throws UserExistException, NoSuchUserException, NoSuchRoleException, RoleExistException, NullOrEmptyArgumentsException{
+        RoleDTO roleDTO = userService.createRole(environment.getProperty("role_waiter"));
+
         userService.createUser(TestUtil.USERNAME_2, TestUtil.PASSWORD, roleDTO.getRole());
 
         // Tests if user creates.
@@ -87,7 +74,7 @@ public class TestUserDAO extends AbstractTransactionalJUnit4SpringContextTests {
         thrown.expect(NoSuchUserException.class);
         userService.getUserByUsername(TestUtil.INVALID_USERNAME);
         thrown.expect(NoSuchUserException.class);
-        userService.getUserById(TestUtil.INVALID_USER_ID);
+        userService.getUserById(TestUtil.INVALID_ID);
         thrown.expect(NoSuchUserException.class);
         userService.getAllUsersByRole(TestUtil.INVALID_ROLE);
         userService.getAllUsersByRole(environment.getProperty("role_manager"));

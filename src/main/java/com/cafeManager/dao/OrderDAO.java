@@ -15,7 +15,7 @@ public interface OrderDAO {
     /** Finds order with specified Id */
     OrderDTO getOrder(Long orderId);
 
-    /** Update order details */
+    /** Updates order with specified Id */
     OrderDTO updateOrder(OrderDTO orderDTO);
 
     /** Gets all products list within specified order */
@@ -24,9 +24,10 @@ public interface OrderDAO {
     /** Creates order-adapted ProductInOrder */
     ProductInOrderDTO addProductToOrder(ProductInOrderDTO productInOrderDTO);
 
-    /** Updates order-adapted ProductInOrder */
-    ProductInOrderDTO updateProductToOrder(ProductInOrderDTO productInOrderDTO);
-
     /** Finds specified order-adapted ProductInOrder from ProductInOrder table*/
     ProductInOrderDTO getProductInOrder(Long productInOrderId);
+
+    /** Updates order-adapted existing ProductInOrder */
+    ProductInOrderDTO updateProductToOrder(ProductInOrderDTO productInOrderDTO);
+
 }

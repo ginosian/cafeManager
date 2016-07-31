@@ -26,7 +26,14 @@ public interface TableService {
     TableDTO getTable(String tableId)throws NoSuchTableException, NullOrEmptyArgumentsException;
 
     /**
-     * Updates specified Table. Checks if table doesn't exist returns null.
+     * Finds specified Table.
+     * @return {@link TableDTO}
+     * @throws NoSuchTableException if no table exist.
+     * */
+    List<TableDTO> getAllTables()throws NoSuchTableException;
+
+    /**
+     * Updates specified Table.
      * @param userId String representation of assignee waiter id.
      * @param tableId String representation of table id.
      * @return {@link TableDTO}

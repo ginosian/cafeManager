@@ -1,6 +1,5 @@
 package com.cafeManager.configuration;
 
-import com.cafeManager.configuration.Configurations;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -46,7 +45,5 @@ public class Initializer implements WebApplicationInitializer {
 //        EnumSet<DispatcherType> dispatcherTypes = EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD);
 //        security.addMappingForUrlPatterns(dispatcherTypes, true, "/**");
     }
-
-
 
 }

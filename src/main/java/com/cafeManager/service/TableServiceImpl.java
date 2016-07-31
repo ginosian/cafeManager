@@ -43,6 +43,14 @@ public class TableServiceImpl implements TableService{
     }
 
     @Override
+    public List<TableDTO> getAllTables() throws NoSuchTableException {
+        List<TableDTO> tables = tableDAO.getAllTables();
+        if(tables.size() < 1) throw new NoSuchTableException();
+
+        return tables;
+    }
+
+    @Override
     public TableDTO updateTableWIthWaiter(String userId, String tableId) throws NoSuchUserException, NoSuchTableException, NullOrEmptyArgumentsException {
         if(userId == null || userId.isEmpty() || tableId == null || tableId.isEmpty()) throw new NullOrEmptyArgumentsException();
 
