@@ -43,7 +43,7 @@ public class TestTableDAO {
 
                 // Tests if proper exception is thrown if an invalid table id is passed
                 thrown.expect(NoSuchTableException.class);
-                tableService.getTable(TestUtil.INVALID_ID);
+                tableService.getTableById(TestUtil.INVALID_ID);
 
                 // Tests if it is prevented to add order to a table if table already has an active order
 

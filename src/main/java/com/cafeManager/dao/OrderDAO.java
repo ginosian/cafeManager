@@ -30,4 +30,7 @@ public interface OrderDAO {
     /** Updates order-adapted existing ProductInOrder */
     ProductInOrderDTO updateProductToOrder(ProductInOrderDTO productInOrderDTO);
 
+    /** Deletes order-adapted existing ProductInOrder */
+    ProductInOrderDTO deleteProductToOrder(ProductInOrderDTO productInOrderDTO);
+
 }

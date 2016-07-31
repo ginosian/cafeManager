@@ -123,4 +123,15 @@ public class OrderDAOImpl implements OrderDAO {
         return null;
     }
 
+    @Override
+    public ProductInOrderDTO deleteProductToOrder(ProductInOrderDTO productInOrderDTO) {
+        Session session = getSession();
+        try{
+            session.delete(productInOrderDTO);
+            return productInOrderDTO;
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
