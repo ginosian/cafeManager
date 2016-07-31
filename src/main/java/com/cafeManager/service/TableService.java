@@ -31,27 +31,31 @@ public interface TableService {
      * @param tableId String representation of table id.
      * @return {@link TableDTO}
      * @throws NoSuchUserException if user doesn't exist.
-     * @throws TableAlreadyHasWaiter if table already has assigned waiter, as one table can have only one assignee.
+     * @throws NoSuchTableException if table doesn't exist.
      * @throws NullOrEmptyArgumentsException if any argument is missing or is a null.
      * */
-    TableDTO updateTableWIthWaiter(String userId, String tableId)throws NoSuchUserException, TableAlreadyHasWaiter, NullOrEmptyArgumentsException;
+    TableDTO updateTableWIthWaiter(String userId, String tableId)throws NoSuchUserException, NoSuchTableException, NullOrEmptyArgumentsException;
 
     /**
      * Assignees specified Table with new order and activates order.
      * @param orderId String representation of order id.
      * @return {@link TableDTO}
      * @throws NoSuchOrderException if order doesn't exist. First an order should be created.
+     * @throws NoSuchTableException if table doesn't exist.
      * @throws TableHasActiveOrderException Table already has active order so can not accept new one.
      * @throws NullOrEmptyArgumentsException if any argument is missing or is a null.
      * */
-    TableDTO updateTableWIthOrder(String orderId)throws NoSuchOrderException, TableHasActiveOrderException, NullOrEmptyArgumentsException;
+    TableDTO updateTableWIthOrder(String orderId, String tableId)throws NoSuchOrderException, NoSuchTableException, TableHasActiveOrderException, NullOrEmptyArgumentsException;
 
     /**
      * Updates specified Table. Checks if table doesn't exist returns null.
+     * @param tableId String representation of table id.
      * @return {@link TableDTO}
+     * @throws NoSuchTableException if table doesn't exist.
      * @throws TableHasNoActiveOrderException Table has no active order so can nothing to deactivate.
+     * @throws NullOrEmptyArgumentsException if any argument is missing or is a null.
      * */
-    TableDTO deactivateTableOrder()throws TableHasNoActiveOrderException;
+    TableDTO deactivateTableOrder(String tableId)throws NoSuchTableException, TableHasNoActiveOrderException, NullOrEmptyArgumentsException;
 
     /**
      * Gets those Tables which are assigned to specified waiter. Checks if id is empty or 0 throws EmptyArgumentException.

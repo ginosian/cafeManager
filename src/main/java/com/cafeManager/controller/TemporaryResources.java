@@ -30,29 +30,6 @@ public class TemporaryResources {
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public ModelAndView addRole() {
         ModelAndView modelAndView = new ModelAndView();
-//        if(i) {
-//            try {
-//                userService.createRole(environment.getProperty("role_waiter"));
-//                userService.createRole(environment.getProperty("role_manager"));
-//            } catch (RoleExistException e) {
-//                e.printStackTrace();
-//            }
-//            try {
-//                userService.createUser("Karen", "aa", environment.getProperty("role_waiter"));
-//                userService.createUser("Karine", "aa", environment.getProperty("role_waiter"));
-//                userService.createUser("John", "aa", environment.getProperty("role_waiter"));
-//            } catch (UserExistException e) {
-//                e.printStackTrace();
-//                modelAndView.setViewName("exception_user_exist");
-//                return modelAndView;
-//            }
-//            i = false;
-//        }
-//        List<UserDTO> userDTOs = userService.getAllUsersByRole(environment.getProperty("role_waiter"));
-//        for (int i = 0; i < userDTOs.size(); i++) {
-//            System.out.println("***********" + userDTOs.get(i).getUsername() + "**************");
-//        }
-
         modelAndView.setViewName("index");
         return modelAndView;
     }
