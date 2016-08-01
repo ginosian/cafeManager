@@ -31,11 +31,11 @@ public class SecuritySuccessHandler extends SimpleUrlAuthenticationSuccessHandle
 
     public String targetURL(Authentication authentication){
         String targetUrl = "";
-        if(authentication.getAuthorities().toString().contains("WAITER")){
+        if(authentication.getAuthorities().contains("WAITER")){
             targetUrl = "/waiter";
         }
 
-        if(authentication.getAuthorities().toString().contains("MANAGER")){
+        if(authentication.getAuthorities().contains("MANAGER")){
             targetUrl = "/manager";
         }
         return targetUrl;

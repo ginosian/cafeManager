@@ -25,10 +25,10 @@ public class OrderDTO {
     public OrderDTO() {
     }
 
-    public OrderDTO(Set<ProductInOrderDTO> products, TableDTO table, boolean isActive) {
+    public OrderDTO(Set<ProductInOrderDTO> products, TableDTO table) {
         this.products = products;
         this.table = table;
-        this.isActive = isActive;
+        this.isActive = false;
     }
 
     public void open(){

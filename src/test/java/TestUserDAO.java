@@ -35,7 +35,7 @@ public class TestUserDAO extends AbstractTransactionalJUnit4SpringContextTests {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void testRole() throws RoleExistException, NoSuchRoleException, NullOrEmptyArgumentsException{
+    public void testRole() throws CustomException{
 
         // Tests if role creates.
         userService.createRole(environment.getProperty("role_waiter"));

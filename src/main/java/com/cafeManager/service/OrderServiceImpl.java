@@ -32,7 +32,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDTO createOrder() {
-        return orderDAO.addOrder(new OrderDTO());
+        OrderDTO orderDTO = new OrderDTO();
+        orderDTO.setIsActive(false);
+        return orderDAO.addOrder(orderDTO);
     }
 
     @Override
