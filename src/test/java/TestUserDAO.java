@@ -57,7 +57,7 @@ public class TestUserDAO extends AbstractTransactionalJUnit4SpringContextTests {
     }
 
     @Test
-    public void testUser()throws UserExistException, NoSuchUserException, NoSuchRoleException, RoleExistException, NullOrEmptyArgumentsException{
+    public void testUser()throws CustomException{
         RoleDTO roleDTO = userService.createRole(environment.getProperty("role_waiter"));
 
         userService.createUser(TestUtil.USERNAME_2, TestUtil.PASSWORD, roleDTO.getRole());

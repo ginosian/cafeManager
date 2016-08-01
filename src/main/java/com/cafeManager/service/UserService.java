@@ -67,4 +67,8 @@ public interface UserService {
      * */
     RoleDTO getRole(String role) throws NoSuchRoleException, NullOrEmptyArgumentsException;
 
+    /** Checks if default waiter and manager doesn't exist creates one from each.
+     * */
+    void initDefaultUsers();
+
 }

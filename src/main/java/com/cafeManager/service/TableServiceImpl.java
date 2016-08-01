@@ -7,6 +7,7 @@ import com.cafeManager.dto.UserDTO;
 import com.cafeManager.exception.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
  * Created by Martha on 7/29/2016.
  */
 @Service
+@Transactional
 public class TableServiceImpl implements TableService{
 
     @Autowired

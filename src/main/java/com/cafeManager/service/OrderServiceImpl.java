@@ -5,6 +5,8 @@ import com.cafeManager.dto.*;
 import com.cafeManager.exception.*;
 import com.cafeManager.util.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -12,6 +14,8 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Created by Martha on 7/31/2016.
  */
+@Service
+@Transactional
 public class OrderServiceImpl implements OrderService {
 
     @Autowired

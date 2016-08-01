@@ -2,6 +2,8 @@ package com.cafeManager.dao;
 
 import com.cafeManager.dto.ProductDTO;
 
+import java.util.List;
+
 /**
  * Created by Martha on 7/29/2016.
  */
@@ -15,4 +17,7 @@ public interface ProductDAO {
 
     /** Finds product with specified Name */
     ProductDTO getProductByName(String productName);
+
+    /** Finds all existing products. */
+    List<ProductDTO> getAllProducts();
 }

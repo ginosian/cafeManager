@@ -6,10 +6,16 @@ import com.cafeManager.exception.NoSuchProductException;
 import com.cafeManager.exception.NullOrEmptyArgumentsException;
 import com.cafeManager.exception.ProductExistException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by Martha on 7/31/2016.
  */
+@Service
+@Transactional
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
@@ -32,5 +38,12 @@ public class ProductServiceImpl implements ProductService {
         if(productDTO == null) throw new NoSuchProductException();
 
         return productDTO;
+    }
+
+    @Override
+    public List<ProductDTO> getAllProducts() throws NoSuchProductException, NullOrEmptyArgumentsException {
+        List<ProductDTO> products = productDAO.getAllProducts();
+        if(products == null) throw new NoSuchProductException();
+        return products;
     }
 }

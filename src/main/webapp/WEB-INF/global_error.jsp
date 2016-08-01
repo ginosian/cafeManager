@@ -12,7 +12,8 @@
 </head>
 <body>
 
-<p>Test Requests</p>
+<p> Error has occurred.</p>
+<input onclick="location.href='${pageContext.request.contextPath}'" type="button">Back to home page.</input>
 
 </body>
 </html>

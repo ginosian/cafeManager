@@ -27,4 +27,7 @@ public interface UserDAO {
 
     /** Finds specified role*/
     RoleDTO getRole(String role);
+
+    /** Creates a table to store token for rememberMe funtionality*/
+    void addRememberMeTable();
 }

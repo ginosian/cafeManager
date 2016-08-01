@@ -3,7 +3,7 @@ package com.cafeManager.exception;
 /**
  * Created by Martha on 7/29/2016.
  */
-public class NullOrEmptyArgumentsException extends Exception {
+public class NullOrEmptyArgumentsException extends CustomException {
     public NullOrEmptyArgumentsException() {
         super();
     }

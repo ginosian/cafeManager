@@ -3,11 +3,11 @@ package com.cafeManager.configuration;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
+import javax.servlet.*;
+import java.util.EnumSet;
 
 /**
  * Created by Martha on 7/29/2016.
@@ -37,13 +37,11 @@ public class Initializer implements WebApplicationInitializer {
         servlet.setLoadOnStartup(1);
 
         //Registers security filters
-        //TODO uncomment as soon as authentication logic will be implemented
-//        FilterRegistration.Dynamic security = servletContext.addFilter("springSecurityFilterChain", new DelegatingFilterProxy());
+        FilterRegistration.Dynamic security = servletContext.addFilter("springSecurityFilterChain", new DelegatingFilterProxy());
 
         // Sets dispatcher types a security filters to be applied
-        //TODO uncomment as soon as authentication logic will be implemented
-//        EnumSet<DispatcherType> dispatcherTypes = EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD);
-//        security.addMappingForUrlPatterns(dispatcherTypes, true, "/**");
+        EnumSet<DispatcherType> dispatcherTypes = EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD);
+        security.addMappingForUrlPatterns(dispatcherTypes, true, "/*");
     }
 
 }

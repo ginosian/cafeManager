@@ -1,7 +1,6 @@
 package com.cafeManager.dao;
 
 import com.cafeManager.dto.ProductDTO;
-import com.cafeManager.dto.TableDTO;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -9,6 +8,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by Martha on 7/29/2016.
@@ -61,6 +62,20 @@ public class ProductDAOImpl implements ProductDAO{
             ProductDTO productDTO = (ProductDTO)query.list().get(0);
             if (query.list().size() < 1) return null;
             return productDTO;
+        }
+        catch (HibernateException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<ProductDTO> getAllProducts() {
+        Session session = getSession();
+        try{
+            List<ProductDTO> products = session.createQuery("from ProductDTO productDTO").list();
+            if (products.size() < 1) return null;
+            return products;
         }
         catch (HibernateException e){
             e.printStackTrace();

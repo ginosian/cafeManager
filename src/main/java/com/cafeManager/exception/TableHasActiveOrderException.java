@@ -3,7 +3,7 @@ package com.cafeManager.exception;
 /**
  * Created by Martha on 7/29/2016.
  */
-public class TableHasActiveOrderException extends Exception {
+public class TableHasActiveOrderException extends CustomException {
     public TableHasActiveOrderException() {
         super();
     }
